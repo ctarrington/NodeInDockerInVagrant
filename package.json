@@ -1,0 +1,32 @@
+{
+  "name": "node-in-docker-in-vagrant",
+  "version": "0.0.1",
+  "description": "Playground for node running in docker in vagrant",
+  "main": "echo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "compression": "^1.0.3",
+    "cors": "^2.5.2",
+    "errorhandler": "^1.1.1",
+    "express": "^4.13.3",
+    "cwd-config": "^1.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ctarrington/NodeInDockerInVagrant.git"
+  },
+  "keywords": [
+    "node",
+    "docker",
+    "vagrant"
+  ],
+  "author": "CT Arrington",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ctarrington/NodeInDockerInVagrant/issues"
+  },
+  "homepage": "https://github.com/ctarrington/NodeInDockerInVagrant#readme"
+}

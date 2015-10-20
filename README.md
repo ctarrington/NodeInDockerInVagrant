@@ -8,4 +8,10 @@ npm install
 
 node echo.js
 
-# Run in container(s)
+# Build and Run in container(s)
+ - commit and push repo
+ - vagrant up
+ - vagrant ssh
+ - cd /vagrant
+ - docker build -t nid-image .
+ - docker 
