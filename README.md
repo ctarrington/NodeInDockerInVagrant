@@ -18,5 +18,11 @@ http://localhost:3666/echoQ?q=hi%20thereeee
  - docker run -d --name nid1 -p 3666:3666 nid
  - http://localhost:3333/echoQ?q=hi%20thereeee
  
+# Graceful Shutdown
+ - docker stop nid1
+ - docker rm nid1
+ - exit to mac
+ - vagrant halt
+ 
 # completely clean
  - vagrant destroy
