@@ -13,5 +13,5 @@ node echo.js
  - vagrant up
  - vagrant ssh
  - cd /vagrant
- - docker build -t nid-image .
- - docker 
+ - docker build -t nid .
+ - docker run -d --name nid1 -p 3666:3666 nid
