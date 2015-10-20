@@ -7,6 +7,7 @@
 npm install
 
 node echo.js
+http://localhost:3666/echoQ?q=hi%20thereeee
 
 # Build and Run in container(s)
  - commit and push repo
@@ -15,3 +16,7 @@ node echo.js
  - cd /vagrant
  - docker build -t nid .
  - docker run -d --name nid1 -p 3666:3666 nid
+ - http://localhost:3333/echoQ?q=hi%20thereeee
+ 
+# completely clean
+ - vagrant destroy
