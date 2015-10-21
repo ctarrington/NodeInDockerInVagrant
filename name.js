@@ -18,5 +18,5 @@ var server = app.listen(3332, function () {
         nameIndex = nameIndex % names.length;
     });
 
-    console.log('Dungeon Authentication listening at http://%s:%s', server.address().address, server.address().port);
+    console.log('Name Service listening at http://%s:%s', server.address().address, server.address().port);
 });

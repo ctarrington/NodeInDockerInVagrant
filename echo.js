@@ -9,12 +9,16 @@ var request = require('superagent');
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded({ extended: true }) );
 
+var SERVICE_HOST = (process.env.DOCKER_HOST) || 'localhost';
+console.log('SERVICE_HOST = '+SERVICE_HOST);
+
 var server = app.listen(3331, function () {
 
     app.get('/echoQ', function(req, res) {
 
+
         request
-            .get('http://localhost:3332/name')
+            .get('http://'+SERVICE_HOST+':3332/name')
             .end(function(err, nameResponse) {
                 var name = 'No name';
 
@@ -30,5 +34,5 @@ var server = app.listen(3331, function () {
             });
     });
 
-    console.log('Dungeon Authentication listening at http://%s:%s', server.address().address, server.address().port);
+    console.log('Echo Service listening at http://%s:%s', server.address().address, server.address().port);
 });
