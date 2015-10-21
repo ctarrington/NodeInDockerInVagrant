@@ -14,13 +14,15 @@ http://localhost:3666/echoQ?q=hi%20thereeee
  - vagrant up
  - vagrant ssh
  - cd /vagrant
- - docker build -t nid .
- - docker run -d --name nid1 -p 3666:3666 nid
+ - docker build --file Dockerfile.echo -t echoImage .
+ - docker build --file Dockerfile.name -t nameImage .
+ - docker run -d --name echoContainer -p 3331:3331 echo
+ - docker run -d --name nameContainer -p 3331:3331 name
  - http://localhost:3333/echoQ?q=hi%20thereeee
  
 # Graceful Shutdown
- - docker stop nid1
- - docker rm nid1
+ - docker stop echoContainer
+ - docker rm echoContainer
  - exit to mac
  - vagrant halt
  

@@ -10,9 +10,10 @@
     "body-parser": "^1.13.3",
     "compression": "^1.0.3",
     "cors": "^2.5.2",
+    "cwd-config": "^1.0.1",
     "errorhandler": "^1.1.1",
     "express": "^4.13.3",
-    "cwd-config": "^1.0.1"
+    "superagent": "^1.4.0"
   },
   "repository": {
     "type": "git",

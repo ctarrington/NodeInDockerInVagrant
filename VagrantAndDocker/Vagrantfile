@@ -9,8 +9,9 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "dockerhost"
   config.vm.box = "ubuntu/trusty64"
-  config.vm.network "forwarded_port",
-    guest: 3666, host: 3333
+
+  config.vm.network "forwarded_port", guest: 3331, host: 3331
+  config.vm.network "forwarded_port", guest: 3332, host: 3332
 
   config.vm.provision "docker" do |d|
     d.pull_images "node"
