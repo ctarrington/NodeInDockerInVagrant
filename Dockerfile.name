@@ -1,0 +1,10 @@
+FROM node:latest
+
+RUN mkdir nid
+WORKDIR nid
+
+COPY package.json /nid/
+RUN npm install
+
+COPY name.js /nid/
+ENTRYPOINT node name.js

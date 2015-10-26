@@ -29,7 +29,7 @@ var server = app.listen(3331, function () {
                     name = nameResponse.text;
                 }
 
-                res.send(req.query.q+' '+name );
+                res.send('hi! q = ' +req.query.q+' name = '+name );
 
             });
     });

@@ -15,5 +15,9 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "docker" do |d|
     d.pull_images "node"
+
+    d.build_image " --file /vagrant/Dockerfile.echo -t echo-image /vagrant"
+    d.build_image " --file /vagrant/Dockerfile.name -t name-image /vagrant"
   end
+
 end
