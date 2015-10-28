@@ -9,16 +9,23 @@ var request = require('superagent');
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded({ extended: true }) );
 
-var SERVICE_HOST = (process.env.DOCKER_HOST) || 'localhost';
-console.log('SERVICE_HOST = '+SERVICE_HOST);
+var ECHO_SVC_PORT = process.env.HWCONFIG_ECHO_SVC_PORT;
+var NAME_SVC_HOST = process.env.HWCONFIG_NAME_SVC_HOST;
+var NAME_SVC_PORT = process.env.HWCONFIG_NAME_SVC_PORT;
 
-var server = app.listen(3331, function () {
+if (!ECHO_SVC_PORT || !NAME_SVC_HOST || !NAME_SVC_PORT) {
+    var msg = 'missing an environment variable';
+    console.log(msg);
+    throw new Error(msg);
+}
+
+var server = app.listen(ECHO_SVC_PORT, function () {
 
     app.get('/echoQ', function(req, res) {
 
 
         request
-            .get('http://'+SERVICE_HOST+':3332/name')
+            .get('http://'+NAME_SVC_HOST+':'+NAME_SVC_PORT+'/name')
             .end(function(err, nameResponse) {
                 var name = 'No name';
 

@@ -40,3 +40,9 @@ docker ps -a
 docker rm -f $(docker ps -a -q)
 docker rmi $(docker images -q)
 
+
+#Run locally 
+HWCONFIG_ECHO_SVC_HOST=localhost HWCONFIG_ECHO_SVC_PORT=3001 HWCONFIG_NAME_SVC_HOST=localhost HWCONFIG_NAME_SVC_PORT=3002 node echo.js
+
+HWCONFIG_ECHO_SVC_HOST=localhost HWCONFIG_ECHO_SVC_PORT=3001 HWCONFIG_NAME_SVC_HOST=localhost HWCONFIG_NAME_SVC_PORT=3002 node name.js
+

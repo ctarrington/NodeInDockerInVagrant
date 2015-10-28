@@ -10,7 +10,15 @@ app.use( bodyParser.urlencoded({ extended: true }) );
 var names = ['fred', 'barney', 'wilma', 'betty'];
 var nameIndex = 0;
 
-var server = app.listen(3332, function () {
+var NAME_SVC_PORT = process.env.HWCONFIG_NAME_SVC_PORT;
+
+if (!NAME_SVC_PORT) {
+    var msg = 'missing an environment variable';
+    console.log(msg);
+    throw new Error(msg);
+}
+
+var server = app.listen(NAME_SVC_PORT, function () {
 
     app.get('/name', function(req, res) {
         res.send(names[nameIndex]);
