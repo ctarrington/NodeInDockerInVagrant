@@ -1,23 +1,15 @@
 # Goals
- - Vagrantfile and Dockerfile for node app
- - Pull from github
- - 
-
-# Installation to Run Locally
-npm install
-
-node echo.js
-http://localhost:3666/echoQ?q=hi%20thereeee
+ - Vagrantfile and Dockerfile for node apps 
 
 # Build and Run in container(s)
  - commit and push repo
  - vagrant up
  - vagrant ssh
  - cd /vagrant
- - docker build --file Dockerfile.echo -t echo-image .
- - docker build --file Dockerfile.name -t name-image .
- - docker run -d --name echoContainer -p 3331:3331 -e "DOCKER_HOST=$(ip -4 addr show docker0 | grep -Po 'inet \K[\d.]+')" echo-image
- - docker run -d --name nameContainer -p 3332:3332 -e "DOCKER_HOST=$(ip -4 addr show docker0 | grep -Po 'inet \K[\d.]+')" name-image
+ - . ./vagrant_configs.env
+ - docker run -d --name name-container -p $HWCONFIG_NAME_SVC_PORT:$HWCONFIG_NAME_SVC_PORT -e HWCONFIG_NAME_SVC_PORT name-image
+ - docker run -d --name echo-container -p $HWCONFIG_ECHO_SVC_PORT:$HWCONFIG_ECHO_SVC_PORT -e HWCONFIG_ECHO_SVC_PORT -e HWCONFIG_NAME_SVC_HOST -e HWCONFIG_NAME_SVC_PORT echo-image
+ 
  - http://localhost:3331/echoQ?q=hi%20thereeee
  - http://localhost:3332/name
  
@@ -42,6 +34,14 @@ docker rmi $(docker images -q)
 
 
 #Run locally 
+. ./vagrant_configs.env
+
+node echo.js
+
+node name.js
+
+OR
+
 HWCONFIG_ECHO_SVC_HOST=localhost HWCONFIG_ECHO_SVC_PORT=3001 HWCONFIG_NAME_SVC_HOST=localhost HWCONFIG_NAME_SVC_PORT=3002 node echo.js
 
 HWCONFIG_ECHO_SVC_HOST=localhost HWCONFIG_ECHO_SVC_PORT=3001 HWCONFIG_NAME_SVC_HOST=localhost HWCONFIG_NAME_SVC_PORT=3002 node name.js
