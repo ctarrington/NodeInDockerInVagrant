@@ -40,5 +40,3 @@ Run some services locally and some in containers
     node echo.js
     node name.js
 
-## Mix and Match
-
