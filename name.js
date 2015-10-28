@@ -10,7 +10,7 @@ app.use( bodyParser.urlencoded({ extended: true }) );
 var names = ['fred', 'barney', 'wilma', 'betty'];
 var nameIndex = 0;
 
-var NAME_SVC_PORT = process.env.HWCONFIG_NAME_SVC_PORT;
+var NAME_SVC_PORT = process.env.NID_CONFIG_NAME_SVC_PORT;
 
 if (!NAME_SVC_PORT) {
     var msg = 'missing an environment variable';

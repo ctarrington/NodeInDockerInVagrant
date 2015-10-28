@@ -1,48 +1,44 @@
 # Goals
- - Vagrantfile and Dockerfile for node apps 
+Vagrantfile and Dockerfile for node apps  
+Run locally  
+Run some services locally and some in containers  
 
-# Build and Run in container(s)
- - commit and push repo
- - vagrant up
- - vagrant ssh
- - cd /vagrant
- - . ./vagrant_configs.env
- - docker run -d --name name-container -p $HWCONFIG_NAME_SVC_PORT:$HWCONFIG_NAME_SVC_PORT -e HWCONFIG_NAME_SVC_PORT name-image
- - docker run -d --name echo-container -p $HWCONFIG_ECHO_SVC_PORT:$HWCONFIG_ECHO_SVC_PORT -e HWCONFIG_ECHO_SVC_PORT -e HWCONFIG_NAME_SVC_HOST -e HWCONFIG_NAME_SVC_PORT echo-image
+# Build and Run in containers
+    commit and push repo
+    vagrant up
+    vagrant ssh
+    cd /vagrant
+    . ./vagrant_configs.env
+    docker run -d --name name-container -p $NID_CONFIG_NAME_SVC_PORT:$NID_CONFIG_NAME_SVC_PORT -e NID_CONFIG_NAME_SVC_PORT name-image
+    docker run -d --name echo-container -p $NID_CONFIG_ECHO_SVC_PORT:$NID_CONFIG_ECHO_SVC_PORT -e NID_CONFIG_ECHO_SVC_PORT -e NID_CONFIG_NAME_SVC_HOST -e NID_CONFIG_NAME_SVC_PORT echo-image
  
- - http://localhost:3331/echoQ?q=hi%20thereeee
- - http://localhost:3332/name
+    http://localhost:3331/echoQ?q=hi%20thereeee
+    http://localhost:3332/name
  
 # Graceful Shutdown
- - docker stop echoContainer
- - docker rm echoContainer
- - exit to mac
- - vagrant halt
+    docker stop echoContainer
+    docker rm echoContainer
+    exit to mac
+    vagrant halt
  
 # completely clean
- - vagrant destroy
+    vagrant destroy
  
  
 # Handy commands
-docker logs <containerName>
-docker run -i -t --entrypoint /bin/bash <imageName>
-docker images
-docker ps -a
+    javascript
+    docker logs <containerName>
+    docker run -i -t --entrypoint /bin/bash <imageName>
+    docker images
+    docker ps -a
 
-docker rm -f $(docker ps -a -q)
-docker rmi $(docker images -q)
-
+    docker rm -f $(docker ps -a -q)
+    docker rmi $(docker images -q)
 
 #Run locally 
-. ./vagrant_configs.env
+    . ./local_configs.env
+    node echo.js
+    node name.js
 
-node echo.js
-
-node name.js
-
-OR
-
-HWCONFIG_ECHO_SVC_HOST=localhost HWCONFIG_ECHO_SVC_PORT=3001 HWCONFIG_NAME_SVC_HOST=localhost HWCONFIG_NAME_SVC_PORT=3002 node echo.js
-
-HWCONFIG_ECHO_SVC_HOST=localhost HWCONFIG_ECHO_SVC_PORT=3001 HWCONFIG_NAME_SVC_HOST=localhost HWCONFIG_NAME_SVC_PORT=3002 node name.js
+## Mix and Match
 

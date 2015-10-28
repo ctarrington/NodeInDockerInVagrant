@@ -9,9 +9,9 @@ var request = require('superagent');
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded({ extended: true }) );
 
-var ECHO_SVC_PORT = process.env.HWCONFIG_ECHO_SVC_PORT;
-var NAME_SVC_HOST = process.env.HWCONFIG_NAME_SVC_HOST;
-var NAME_SVC_PORT = process.env.HWCONFIG_NAME_SVC_PORT;
+var ECHO_SVC_PORT = process.env.NID_CONFIG_ECHO_SVC_PORT;
+var NAME_SVC_HOST = process.env.NID_CONFIG_NAME_SVC_HOST;
+var NAME_SVC_PORT = process.env.NID_CONFIG_NAME_SVC_PORT;
 
 if (!ECHO_SVC_PORT || !NAME_SVC_HOST || !NAME_SVC_PORT) {
     var msg = 'missing an environment variable';
