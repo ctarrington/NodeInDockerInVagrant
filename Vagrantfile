@@ -10,8 +10,8 @@ Vagrant.configure("2") do |config|
   config.vm.define "dockerhost"
   config.vm.box = "ubuntu/trusty64"
 
-  config.vm.network "forwarded_port", guest: 3331, host: 3331
-  config.vm.network "forwarded_port", guest: 3332, host: 3332
+  config.vm.network "forwarded_port", guest: 4331, host: 4331
+  config.vm.network "forwarded_port", guest: 4332, host: 4332
 
   config.vm.provision "docker" do |d|
     d.pull_images "node"
@@ -19,5 +19,8 @@ Vagrant.configure("2") do |config|
     d.build_image " --file /vagrant/Dockerfile.echo -t echo-image /vagrant"
     d.build_image " --file /vagrant/Dockerfile.name -t name-image /vagrant"
   end
+
+  config.vm.provision "shell",
+    inline: "chmod 777 /vagrant/*.sh"
 
 end

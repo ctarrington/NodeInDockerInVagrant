@@ -8,12 +8,10 @@ Run some services locally and some in containers
     vagrant up
     vagrant ssh
     cd /vagrant
-    . ./vagrant_configs.env
-    docker run -d --name name-container -p $NID_CONFIG_NAME_SVC_PORT:$NID_CONFIG_NAME_SVC_PORT -e NID_CONFIG_NAME_SVC_PORT name-image
-    docker run -d --name echo-container -p $NID_CONFIG_ECHO_SVC_PORT:$NID_CONFIG_ECHO_SVC_PORT -e NID_CONFIG_ECHO_SVC_PORT -e NID_CONFIG_NAME_SVC_HOST -e NID_CONFIG_NAME_SVC_PORT echo-image
- 
-    http://localhost:3331/echoQ?q=hi%20thereeee
-    http://localhost:3332/name
+    ./run_services.sh
+    
+    http://localhost:4331/echoQ?q=hi%20thereeee
+    http://localhost:4332/name
  
 # Graceful Shutdown
     docker stop echoContainer
@@ -26,7 +24,6 @@ Run some services locally and some in containers
  
  
 # Handy commands
-    javascript
     docker logs <containerName>
     docker run -i -t --entrypoint /bin/bash <imageName>
     docker images
