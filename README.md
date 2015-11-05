@@ -4,14 +4,18 @@ Run locally
 Run some services locally and some in containers  
 
 # Build and Run in containers
-    commit and push repo
     vagrant up
+    
+# Test locally
+    http://localhost:4331/echoQ?q=hi%20thereeee
+    http://localhost:4332/name
+    
+# Mainual startup
     vagrant ssh
     cd /vagrant
     ./run_services.sh
     
-    http://localhost:4331/echoQ?q=hi%20thereeee
-    http://localhost:4332/name
+    
  
 # Graceful Shutdown
     docker stop echoContainer
