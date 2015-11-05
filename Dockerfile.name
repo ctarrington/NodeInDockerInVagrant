@@ -1,4 +1,7 @@
-FROM node:latest
+FROM node:4
+
+# Setup PATH to prioritize local npm bin ahead of system PATH.
+ENV PATH node_modules/.bin:$PATH
 
 RUN mkdir nid
 WORKDIR nid
