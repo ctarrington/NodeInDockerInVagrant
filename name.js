@@ -21,6 +21,8 @@ if (!NAME_SVC_PORT) {
 var server = app.listen(NAME_SVC_PORT, function () {
 
     app.get('/name', function(req, res) {
+
+        console.log('In /name');
         res.send(names[nameIndex]);
         nameIndex++;
         nameIndex = nameIndex % names.length;

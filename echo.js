@@ -24,8 +24,12 @@ var server = app.listen(ECHO_SVC_PORT, function () {
     app.get('/echoQ', function(req, res) {
 
 
+        console.log('In /echoQ');
+        var nameServiceUrl = 'http://'+NAME_SVC_HOST+':'+NAME_SVC_PORT+'/name';
+        console.log('nameServiceUrl: '+nameServiceUrl);
+
         request
-            .get('http://'+NAME_SVC_HOST+':'+NAME_SVC_PORT+'/name')
+            .get(nameServiceUrl)
             .end(function(err, nameResponse) {
                 var name = 'No name';
 

@@ -3,16 +3,15 @@
 
 Vagrant.configure("2") do |config|
 
-  config.vm.define "dockerhost"
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "bento/centos-7.1"
+
+  config.vm.synced_folder ".", "/vagrant/", type: "rsync", rsync__exclude: [".git/", ".idea/"], rsync__auto: "false"
+
 
   config.vm.provider "virtualbox" do |v|
       v.memory = 1024
       v.cpus = 1
     end
-
-  config.vm.network "forwarded_port", guest: 4331, host: 4331
-  config.vm.network "forwarded_port", guest: 4332, host: 4332
 
   config.vm.provision "docker" do |d|
     d.version = "1.9"
@@ -20,7 +19,18 @@ Vagrant.configure("2") do |config|
     d.build_image " --file /vagrant/Dockerfile.name -t name-image /vagrant"
   end
 
-  config.vm.provision "shell",
-    inline: "cd /vagrant && ./run_services.sh"
+  config.vm.define "nid-cluster1" do |cluster|
+    cluster.vm.network "private_network", ip: "192.168.60.11"
+
+    cluster.vm.provision "shell",
+      inline: "cd /vagrant && ./run_cluster1.sh"
+  end
+
+  config.vm.define "nid-cluster2" do |cluster|
+    cluster.vm.network "private_network", ip: "192.168.60.12"
+
+    cluster.vm.provision "shell",
+      inline: "cd /vagrant && ./run_cluster2.sh"
+  end
 
 end
