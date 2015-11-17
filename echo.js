@@ -24,7 +24,7 @@ var server = app.listen(PORT, function () {
 
 
         console.log('In /echoQ');
-        var nameServiceUrl = 'http://name-service'+':'+DISCOVERY_PORT+'/name';
+        var nameServiceUrl = 'http://name.ndv'+':'+DISCOVERY_PORT+'/name';
         console.log('nameServiceUrl: '+nameServiceUrl);
 
         request
