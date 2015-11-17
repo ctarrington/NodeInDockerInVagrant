@@ -10,20 +10,20 @@ app.use( bodyParser.urlencoded({ extended: true }) );
 var names = ['fred', 'barney', 'wilma', 'betty'];
 var nameIndex = 0;
 
-var NAME_SVC_PORT = process.env.NID_CONFIG_NAME_SVC_PORT;
+var PORT = process.env.PORT;
 
-if (!NAME_SVC_PORT) {
+if (!PORT) {
     var msg = 'missing an environment variable';
     console.log(msg);
     throw new Error(msg);
 }
 
-var server = app.listen(NAME_SVC_PORT, function () {
+var server = app.listen(PORT, function () {
 
     app.get('/name', function(req, res) {
 
         console.log('In /name');
-        res.send(names[nameIndex]);
+        res.send(process.env.COLOR+' '+names[nameIndex]);
         nameIndex++;
         nameIndex = nameIndex % names.length;
     });

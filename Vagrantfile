@@ -17,6 +17,7 @@ Vagrant.configure("2") do |config|
     d.version = "1.9"
     d.build_image " --file /vagrant/Dockerfile.echo -t echo-image /vagrant"
     d.build_image " --file /vagrant/Dockerfile.name -t name-image /vagrant"
+    d.build_image " --file /vagrant/Dockerfile.nginx -t nginx-image /vagrant"
   end
 
   config.vm.define "nid-cluster1" do |cluster|
@@ -24,13 +25,6 @@ Vagrant.configure("2") do |config|
 
     cluster.vm.provision "shell",
       inline: "cd /vagrant && ./run_cluster1.sh"
-  end
-
-  config.vm.define "nid-cluster2" do |cluster|
-    cluster.vm.network "private_network", ip: "192.168.60.12"
-
-    cluster.vm.provision "shell",
-      inline: "cd /vagrant && ./run_cluster2.sh"
   end
 
 end
