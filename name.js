@@ -23,7 +23,7 @@ var server = app.listen(PORT, function () {
     app.get('/name', function(req, res) {
 
         console.log('In /name');
-        res.send(process.env.COLOR+' '+names[nameIndex]);
+        res.send(names[nameIndex]);
         nameIndex++;
         nameIndex = nameIndex % names.length;
     });

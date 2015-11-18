@@ -21,6 +21,9 @@ Vagrant.configure("2") do |config|
     cluster.vm.network "private_network", ip: "192.168.60.11"
 
     cluster.vm.provision "shell",
+      inline: "cd /vagrant && ./create_start_services.sh echo name name > generated_start_services.sh && chmod +x generated_start_services.sh && chown vagrant generated_start_services.sh"
+
+    cluster.vm.provision "shell",
       inline: "cd /vagrant && ./restart_all.sh"
   end
 

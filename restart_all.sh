@@ -6,5 +6,5 @@
 ./remove_images.sh
 ./build_images.sh
 
-./start_services.sh
+./generated_start_services.sh
 ./start_nginx.sh

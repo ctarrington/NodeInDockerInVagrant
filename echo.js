@@ -39,7 +39,7 @@ var server = app.listen(PORT, function () {
                     name = nameResponse.text;
                 }
 
-                res.send('hi! q = ' +req.query.q+' name = '+name );
+                res.send('NID_RESOUCE_HOST: '+process.env.NID_RESOUCE_HOST+ ' hi! q = ' +req.query.q+' name = '+name );
 
             });
     });
