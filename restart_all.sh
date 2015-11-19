@@ -1,6 +1,6 @@
 #!/bin/bash
 
-allocations="echo 2 name 2"
+allocations="echo 1 name 2"
 
 ./stop_nginx.sh
 ./stop_services.sh
