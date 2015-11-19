@@ -24,7 +24,7 @@ var server = app.listen(PORT, function () {
 
 
         console.log('In /echoQ');
-        var nameServiceUrl = 'http://name.ndv'+':'+DISCOVERY_PORT+'/name';
+        var nameServiceUrl = 'http://name.ndv.here'+':'+DISCOVERY_PORT+'/name';
         console.log('nameServiceUrl: '+nameServiceUrl);
 
         request
@@ -39,7 +39,7 @@ var server = app.listen(PORT, function () {
                     name = nameResponse.text;
                 }
 
-                res.send('NID_RESOUCE_HOST: '+process.env.NID_RESOUCE_HOST+ ' hi! q = ' +req.query.q+' name = '+name );
+                res.send('Echo: NID_RESOUCE_HOST: '+process.env.NID_RESOURCE_HOST+ ' NID_CLUSTER_HOST: '+process.env.NID_CLUSTER_HOST+'<br/>\n hi! q = ' +req.query.q+' name = '+name );
 
             });
     });

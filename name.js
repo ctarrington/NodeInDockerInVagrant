@@ -23,7 +23,7 @@ var server = app.listen(PORT, function () {
     app.get('/name', function(req, res) {
 
         console.log('In /name');
-        res.send(names[nameIndex]);
+        res.send(names[nameIndex]+' NID_RESOUCE_HOST: '+process.env.NID_RESOURCE_HOST+ ' NID_CLUSTER_HOST: '+process.env.NID_CLUSTER_HOST);
         nameIndex++;
         nameIndex = nameIndex % names.length;
     });
