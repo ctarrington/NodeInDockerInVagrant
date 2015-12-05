@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+VBoxService --timesync-set-threshold 1000
+
 allocations="echo 1 name 2"
 
 ./stop_nginx.sh
